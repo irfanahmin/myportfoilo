@@ -3,142 +3,122 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
-    title: 'SafeSight: Women’s Safety Analytics',
-    tech: ['Python','PyTorch','MediaPipe','Flask','MongoDB','Flutter'],
-    desc: 'AI-driven tool detecting personal safety risks in real time and sending proactive alerts with hotspot mapping.',
+    title:'SafeSight: Women’s Safety Analytics',
+    tech:['Python','PyTorch','MediaPipe','Flask','MongoDB','Flutter','Scikit-learn','DBSCAN'],
+    desc:'AI‑driven tool detecting risks and hotspot clustering in real time.',
   },
   {
-    title: 'SafeLens: Visual Safety Filter',
-    tech: ['PyTorch','TensorFlow','VGG19','MediaPipe','WebSockets'],
-    desc: 'Screen privacy solution that detects sensitive content and blurs the display automatically.',
+    title:'SafeLens: Visual Safety Filter',
+    tech:['PyTorch','TensorFlow','VGG19','MediaPipe','WebSockets','OpenCV'],
+    desc:'Blurs sensitive content automatically in live streams.',
   },
   {
-    title: 'Stock Market Predictor',
-    tech: ['Python','Time Series','Streamlit'],
-    desc: 'Interactive dashboard forecasting stock prices using advanced time series models for actionable insights.',
+    title:'Stock Market Predictor',
+    tech:['Python','Time Series','Streamlit','ARIMA','LSTM'],
+    desc:'Forecasts stock prices via ensemble models.',
   },
   {
-    title: 'GitHub Evaluator Bot',
-    tech: ['FastAPI', 'LangChain', 'Pinecone', 'LLaMA', 'GitHub API'],
-    desc: 'AI-powered assistant for analyzing open-source GitHub projects based on activity, support, and documentation.',
+    title:'GitHub Evaluator Bot',
+    tech:['FastAPI','LangChain','Pinecone','LLaMA','GitHub API','Next.js'],
+    desc:'Analyzes repos for activity, docs, and support metrics.',
   },
   {
-    title: 'Video Summarizer',
-    tech: ['Python', 'NLP', 'Speech Recognition', 'Transformers'],
-    desc: 'Converts educational videos into concise, readable notes using speech-to-text and summarization models.',
-  }
+    title:'Video Summarizer',
+    tech:['Python','NLP','Speech Recog.','Transformers','Whisper'],
+    desc:'Turns lectures into concise bullet‑point summaries.',
+  },
 ];
 
-const projectDetails = {
+const details = {
   'SafeSight: Women’s Safety Analytics': {
-    header: 'SafeSight – Models & Architecture',
-    content: [
-      '<strong>Person Detection:</strong> YOLOv5-based CNN for real-time identification.',
-      '<strong>Gender Classification:</strong> CNN based model.',
-      '<strong>SOS Gesture Recognition:</strong> SOS Signals on MediaPipe landmark sequences.',
+    header:'SafeSight – Architecture & Flutter App',
+    content:[
+      '<strong>Detection:</strong> YOLOv5 CNN for real‑time identification.',
+      '<strong>Classification:</strong> CNN gender model with 95% accuracy.',
+      '<strong>Gesture SOS:</strong> MediaPipe landmark handshake.',
+      '<strong>Clustering:</strong> DBSCAN on MongoDB coords for hotspots.',
+      '<strong>Flutter App:</strong> Firebase auth, Leaflet map, SOS UI.',
     ]
   },
   'SafeLens: Visual Safety Filter': {
-    header: 'SafeLens – Outline & Workflow',
-    content: [
-      '<strong>Video Preprocessing:</strong> Capture & preprocess video frames.',
-      '<strong>Content Classification:</strong> VGG19-based model flags sensitive content.',
-      '<strong>Pose Filtering:</strong> MediaPipe-based context understanding.',
-      '<strong>Privacy Effect:</strong> Gaussian blur overlay on flagged regions.'
+    header:'SafeLens – Workflow & Stack',
+    content:[
+      '<strong>Frame Grab:</strong> WebSockets video stream capture.',
+      '<strong>Filtering:</strong> VGG19 sensitive content flags.',
+      '<strong>Pose Check:</strong> MediaPipe for context.',
+      '<strong>Blur:</strong> OpenCV Gaussian mask overlay.',
     ]
   },
   'Stock Market Predictor': {
-    header: 'Stock Predictor – Algorithm & Tools',
-    content: [
-      '<strong>Ensemble Model:</strong> ARIMA + LSTM for robust forecasting.',
-      '<strong>Data Pipeline:</strong> Pandas & NumPy preprocessing.',
-      '<strong>Dashboard:</strong> Streamlit with interactive charts.',
+    header:'Stock Predictor – Pipeline',
+    content:[
+      '<strong>Ingest:</strong> Pandas & NumPy for data prep.',
+      '<strong>Model:</strong> ARIMA + LSTM ensemble.',
+      '<strong>UI:</strong> Streamlit + Plotly interactive charts.',
     ]
   },
   'GitHub Evaluator Bot': {
-    header: 'GitHub Evaluator – Architecture & Features',
-    content: [
-      '<strong>LLM:</strong> Local LLaMA model via LangChain.',
-      '<strong>Memory:</strong> Session memory with Pinecone vector DB.',
-      '<strong>APIs:</strong> GitHub API for real-time repo data.',
-      '<strong>Tools:</strong> Custom LangChain tools for analyzing stars, forks, issues, and docs.'
+    header:'Evaluator Bot – Design',
+    content:[
+      '<strong>LLM:</strong> LLaMA + LangChain queries.',
+      '<strong>Memory:</strong> Pinecone vector store.',
+      '<strong>API:</strong> FastAPI GitHub integrations.',
     ]
   },
   'Video Summarizer': {
-    header: 'Video Summarizer – Workflow & Design',
-    content: [
-      '<strong>Input:</strong> Lecture video file upload.',
-      '<strong>Audio Processing:</strong> Speech-to-text using Whisper.',
-      '<strong>Summarization:</strong> NLP transformers for context-aware note generation.',
-      '<strong>Output:</strong> Clean, structured summary as downloadable text.'
+    header:'Summarizer – Flow',
+    content:[
+      '<strong>Upload:</strong> React front‑end.',
+      '<strong>Transcribe:</strong> Whisper speech‑to‑text.',
+      '<strong>Summarize:</strong> NLP transformer notes.',
     ]
   }
 };
 
 export default function Projects() {
-  const [openProject, setOpenProject] = useState(null);
+  const [open, setOpen] = useState(null);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
+    <section id="projects" className="py-20 bg-blackbg dark:bg-gray-800 transition-colors duration-500">
       <div className="container mx-auto px-6">
         <h3 className="text-4xl font-bold text-primary mb-8">Projects</h3>
         <div className="grid md:grid-cols-3 gap-8">
-          {projects.map((p, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              transition={{ type: 'spring' }}
-              className="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-2xl"
+          {projects.map((p,i)=>(
+            <motion.div key={i}
+              whileHover={{ scale:1.05 }} transition={{ type:'spring' }}
+              className="bg-gray-800 p-6 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-2xl transition-colors duration-300"
             >
-              <h4 className="text-2xl font-semibold mb-2">{p.title}</h4>
-              <p className="text-gray-700 mb-4">{p.desc}</p>
+              <h4 className="text-2xl font-semibold text-gray-200 mb-2">{p.title}</h4>
+              <p className="text-gray-400 mb-4">{p.desc}</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {p.tech.map((t, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-primary bg-opacity-10 text-primary rounded-full text-sm"
-                  >
-                    {t}
-                  </span>
+                {p.tech.map((t,j)=>(
+                  <span key={j} className="px-3 py-1 bg-primary bg-opacity-20 text-primary rounded-full text-sm">{t}</span>
                 ))}
               </div>
-              <button
-                onClick={() => setOpenProject(p.title)}
-                className="text-primary font-medium hover:underline"
-              >
-                View Details →
-              </button>
+              <button onClick={()=>setOpen(p.title)} className="text-primary font-medium hover:underline">View Details →</button>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Modal */}
-      {openProject && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      {open && (
+        <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }}
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={()=>setOpen(null)}
         >
-          <motion.div
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            className="bg-white p-8 rounded-2xl shadow-2xl max-w-lg mx-4"
+          <motion.div initial={{ scale:0.8 }} animate={{ scale:1 }}
+            className="bg-blackbg dark:bg-gray-900 p-8 rounded-2xl shadow-2xl max-w-lg mx-4 transition-colors duration-500"
+            onClick={e=>e.stopPropagation()}
           >
-            <h4 className="text-2xl font-bold mb-4">
-              {projectDetails[openProject].header}
-            </h4>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              {projectDetails[openProject].content.map((line, idx) => (
-                <li key={idx} dangerouslySetInnerHTML={{ __html: line }} />
+            <h4 className="text-2xl font-bold text-gray-200 mb-4">{details[open].header}</h4>
+            <ul className="list-disc list-inside space-y-2 text-gray-400">
+              {details[open].content.map((c,j)=>(
+                <li key={j} dangerouslySetInnerHTML={{ __html:c }}/>
               ))}
             </ul>
-            <button
-              onClick={() => setOpenProject(null)}
-              className="mt-6 px-6 py-2 bg-primary text-white rounded-full shadow hover:bg-secondary transition"
-            >
-              Close
-            </button>
+            <button onClick={()=>setOpen(null)}
+              className="mt-6 px-6 py-2 bg-primary text-blackbg rounded-full shadow hover:opacity-90 transition"
+            >Close</button>
           </motion.div>
         </motion.div>
       )}
