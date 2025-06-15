@@ -1,24 +1,43 @@
-import { motion } from 'framer-motion';
+// components/Hero.js
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="hero" className="h-screen flex items-center justify-center bg-blackbg relative overflow-hidden transition-colors duration-500">
-      {[...Array(5)].map((_,i)=>(
-        <motion.div key={i}
-          initial={{ opacity:0 }} animate={{ opacity:[0,0.2,0], y:[0,-50,0] }}
-          transition={{ duration:8, repeat:Infinity, delay:i }}
-          className="absolute w-72 h-72 bg-primary rounded-full opacity-10"
-        />
-      ))}
-
-      <motion.div initial={{ scale:0.8, opacity:0 }} animate={{ scale:1, opacity:1 }}
-        transition={{ duration:1 }}
-        className="z-10 text-center text-white px-6"
+    <section
+      id="hero"
+      className="h-screen flex flex-col md:flex-row items-center justify-center bg-blackbg dark:bg-gray-900 px-6"
+    >
+      {/* Left: Text */}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7 }}
+        className="md:w-1/2 text-center md:text-left space-y-4"
       >
-        <Image src="/profile.jpg" width={180} height={180} className="rounded-full border-4 border-secondary shadow-lg mx-auto mb-6"/>
-        <h2 className="text-6xl font-extrabold mb-4 drop-shadow-lg">Hello, I'm Irfan</h2>
-        <p className="text-2xl text-gray-300">Backend Developer & AI/ML Engineer</p>
+        <h1 className="text-5xl md:text-6xl font-extrabold text-white">
+          Hello, I’m Irfan
+        </h1>
+        <p className="text-xl text-gray-300">
+          I’m a passionate technologist with a strong foundation in backend development and AI/ML.
+        </p>
+      </motion.div>
+
+      {/* Right: Plain Profile Image */}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7 }}
+        className="md:w-1/2 flex justify-center mt-8 md:mt-0"
+      >
+        <Image
+          src="/profile.jpg"
+          alt="Irfan Khan"
+          width={300}
+          height={300}
+          className="rounded-full object-cover shadow-2xl"
+          priority
+        />
       </motion.div>
     </section>
   );

@@ -4,7 +4,6 @@ const achievements = [
   'Finalist, Smart India Hackathon (SIH) 2024',
   'Patent Holder: SafeLens',
   'Participant in multiple national hackathons',
-  'Built AI-powered GitHub Evaluator Bot used by 100+ developers',
   'Developed a real-time video-to-notes summarizer with Whisper',
   'Contributed to 5 open-source projects on GitHub'
 ];
