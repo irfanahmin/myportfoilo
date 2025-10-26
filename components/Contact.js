@@ -58,7 +58,7 @@ export default function Contact() {
           </a>
 
           <a
-            href="https://drive.google.com/file/d/1slnNGCBWtxbX_5ihG1BCUxvW4AqtRlb1/view?usp=sharing"
+            href="https://drive.google.com/file/d/1himTmoGheIJfvVNGqZZZXAc1GIzPfzjV/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 bg-gray-800/50 text-primary rounded-full shadow-lg hover:bg-primary hover:text-blackbg transition duration-300"
